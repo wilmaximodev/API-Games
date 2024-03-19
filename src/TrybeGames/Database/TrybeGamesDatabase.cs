@@ -11,8 +11,8 @@ public class TrybeGamesDatabase
     // 4. Crie a funcionalidade de buscar jogos desenvolvidos por um estúdio de jogos
     public List<Game> GetGamesDevelopedBy(GameStudio gameStudio)
     {
-        // implementar
-        throw new NotImplementedException();
+        var games = Games.Where(g => g.DeveloperStudio == gameStudio.Id).ToList();
+        return games;
     }
 
     // 5. Crie a funcionalidade de buscar jogos jogados por uma pessoa jogadora
