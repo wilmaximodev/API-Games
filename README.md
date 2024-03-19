@@ -1,6 +1,6 @@
-# Trybe Games
+# API Games
 
-Boas-vindas ao repositório do projeto `Trybe Games`
+Boas-vindas ao repositório do projeto `API Games`
 
 ## Entregáveis
 
