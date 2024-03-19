@@ -56,8 +56,15 @@ public class TrybeGamesDatabase
     // 9. Crie a funcionalidade de buscar todos os estúdios de jogos junto dos seus jogos desenvolvidos com suas pessoas jogadoras
     public List<StudioGamesPlayers> GetStudiosWithGamesAndPlayers()
     {
-        // Implementar
-        throw new NotImplementedException();
+        var studiosWithGamesAndPlayers = GameStudios.Select(studio => new StudioGamesPlayers {
+            GameStudioName = studio.Name,
+            Games = Games.Where(g => g.DeveloperStudio == studio.Id).Select(g => new GamePlayer {
+                GameName = g.Name,
+                Players = Players.Where(p => g.Players.Contains(p.Id)).ToList()
+            }).ToList()
+        }).ToList();
+
+        return studiosWithGamesAndPlayers;
     }
 
 }
