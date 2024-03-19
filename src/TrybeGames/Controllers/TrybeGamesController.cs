@@ -186,7 +186,6 @@ public class TrybeGamesController
         int nextGameId = database.Games.Count + 1;
         database.Games.Add(new Game { Id = nextGameId, Name = gameName, ReleaseDate = validGameReleaseDate, GameType = validGameType });
         Console.WriteLine("Jogo adicionado com sucesso!");
-
     }
 
     public void ChangeGameStudio(Game game)
