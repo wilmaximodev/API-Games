@@ -1,3 +1,4 @@
+using System.Data;
 using System.Globalization;
 
 namespace TrybeGames;
@@ -169,23 +170,23 @@ public class TrybeGamesController
         PrintGameTypes();
         var gameType = Console.ReadLine();
 
-        if(string.IsNullOrWhiteSpace(gameName) || string.IsNullOrWhiteSpace(gameType))
+        if (string.IsNullOrWhiteSpace(gameName))
         {
-            Console.WriteLine("Nome ou tipo inválido! Tente novamente.");
-            return;
+            Console.WriteLine("Nome inválido! Tente novamente.");
         }
-        
-        if(DateTime.TryParse(gameReleaseDate ?? "", out  var data))
+        if (!Enum.TryParse<GameType>(gameType, out var validGameType) || !Enum.IsDefined(typeof(GameType), gameType))
         {
-            int nextGameId = database.Games.Count + 1;
-            database.Games.Add(new Game { Id = nextGameId, Name = gameName, ReleaseDate = data, GameType = (GameType)int.Parse(gameType) });
-            Console.WriteLine("Jogo adicionado com sucesso!");
+            Console.WriteLine("Data de lançamento inválida! Tente novamente.");
         }
-        else
+        if (!DateTime.TryParseExact(gameReleaseDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var validGameReleaseDate))
         {
-            Console.WriteLine("Data inválida! Tente novamente.");
-            return;
+            Console.WriteLine("Tipo de jogo inválido! Tente novamente.");
         }
+
+        int nextGameId = database.Games.Count + 1;
+        database.Games.Add(new Game { Id = nextGameId, Name = gameName, ReleaseDate = validGameReleaseDate, GameType = validGameType });
+        Console.WriteLine("Jogo adicionado com sucesso!");
+
     }
 
     public void ChangeGameStudio(Game game)
