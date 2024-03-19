@@ -66,5 +66,4 @@ public class TrybeGamesDatabase
 
         return studiosWithGamesAndPlayers;
     }
-
 }
