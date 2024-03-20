@@ -212,7 +212,7 @@ Perceba que cada `Game` possui duas relações com `Player`:
 
 Esses Models, por sua vez, são utilizados na classe `TrybeGamesDatabse` para compor o nosso banco de dados. E `TrybeGamesDatabase` é utilizado em `TrybeGamesController` para realizar as consultas e operações requisitadas pela pessoa usuária. Veja no diagrama completo abaixo todas as relações entre cada entidade do sistema.
 
-![diagrama completo](./src/TrybeGames/img/diagram-only-models.png)
+![diagrama completo](TrybeGames/img/diagram-only-models.png)
 
 Não é necessário entender esse diagrama por completo para cumprir os requisitos do sistema. Para cumprir os requisitos, é importante entender como os Models se relacionam e onde os dados estão armazenados.
 
